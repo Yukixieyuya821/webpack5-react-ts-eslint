@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@emotion/css": "^11.10.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
     "@types/node": "^18.7.18",
     "@types/react": "^18.0.20",
@@ -58,6 +59,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-config": "^5.1.1",
-    "react-router-dom": "5.2.0"
+    "react-router-dom": "5.2.0",
+    "slate": "^0.82.1",
+    "slate-history": "^0.66.0",
+    "slate-react": "^0.82.2"
   }
 }
