@@ -13,6 +13,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
     "@types/node": "^18.7.18",
     "@types/react": "^18.0.20",
@@ -35,6 +37,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "glob-all": "^3.3.0",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "7.0.2",
     "mini-css-extract-plugin": "^2.6.1",
     "postcss": "^8.4.16",
     "postcss-loader": "^7.0.1",
@@ -59,5 +62,10 @@
     "react-dom": "^18.2.0",
     "react-router-config": "^5.1.1",
     "react-router-dom": "5.2.0"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
