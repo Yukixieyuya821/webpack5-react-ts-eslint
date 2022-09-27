@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const AutoImport = require('unplugin-auto-import/webpack');
 const isDev = process.env.NODE_ENV === 'development';
 const srcPath = path.resolve(__dirname, '../src');
 module.exports = {
@@ -145,6 +146,16 @@ module.exports = {
         new ProgressBarPlugin({
             format: '  :msg [:bar] :percent (:elapsed s)'
         }),
+        AutoImport({
+            imports: ['react', 'react-router-dom'],
+            dts: './src/auto-imports.d.ts',
+            eslintrc: {
+                enabled: true,
+                // 配置文件的位置
+                filepath: './.eslintrc-auto-import.json',
+                globalsPropValue: true,
+            }
+        })
     ],
     // 开启webpack持久化存储缓存
     cache: {
