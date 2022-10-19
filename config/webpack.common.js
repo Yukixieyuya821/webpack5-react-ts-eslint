@@ -35,15 +35,19 @@ module.exports = {
             },
             // {
             //     test: /\.s[ac]ss$/i,
+            //     enforce: 'pre',
+            //     include: srcPath,
             //     use: [
             //         'style-loader',
             //         'css-loader',
+            //         'postcss-loader',
             //         //将scss编译成css
             //         'sass-loader',
             //     ],
             // },
             {
                 test: /.(scss|sass)$/,
+                enforce: 'pre',
                 include: srcPath,
                 use: [
                     // 将 JS 字符串生成为 style 节点
