@@ -2,7 +2,7 @@ const path = require('path');
 const {merge} = require('webpack-merge');
 const common = require('./webpack.common');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-
+const srcPath = path.join(process.cwd(), 'src');
 module.exports = merge(common, {
     // 模式
     mode: 'development',
@@ -16,7 +16,7 @@ module.exports = merge(common, {
         historyApiFallback: true,
         hot: true,
         static: { //托管静态资源文件
-            directory: path.join(__dirname, '../public'),
+            directory: path.join(srcPath, 'public'),
         }
     },
     plugins: [

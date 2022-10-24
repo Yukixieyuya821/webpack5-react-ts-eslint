@@ -9,6 +9,7 @@ const {PurgeCSSPlugin} = require('purgecss-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const globAll = require('glob-all');
 
+const srcPath = path.join(process.cwd(), 'src');
 module.exports = merge(common, {
     mode: 'production',
     plugins: [
@@ -16,8 +17,8 @@ module.exports = merge(common, {
         new CopyPlugin({
             patterns: [
                 {
-                    from: path.resolve(__dirname, '../public'), // 复制public下文件
-                    to: path.resolve(__dirname, '../dist'), // 复制到dist目录中
+                    from: path.join(process.cwd(), 'public'), // 复制public下文件
+                    to: path.join(process.cwd(), 'dist'), // 复制到dist目录中
                     filter: source =>
                         !source.includes('index.html') // 忽略index.html
 
@@ -31,8 +32,8 @@ module.exports = merge(common, {
         // 去除没用到的css插件
         new PurgeCSSPlugin({
             paths: globAll.sync([
-                `${path.join(__dirname, '../src')}/**/*.tsx`,
-                `${path.join(__dirname, '../public')}/index.html`
+                `${srcPath}/**/*.tsx`,
+                `${srcPath}/public/index.html`
             ]),
             // safelist: {
             //   standard: [/^ant-/], // 过滤以ant-开头的类名，哪怕没用到也不删除

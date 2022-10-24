@@ -5,21 +5,21 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const AutoImport = require('unplugin-auto-import/webpack');
 const isDev = process.env.NODE_ENV === 'development';
-const srcPath = path.resolve(__dirname, '../src');
+const srcPath = path.join(process.cwd(), 'src');
 module.exports = {
     entry: './src/main.tsx',
     output: {
         filename: 'static/js/[name].[chunkhash:8].js', // 每个输出js的名称
-        path: path.resolve(__dirname, '../dist'), // 打包的出口文件夹路径
+        path: path.join(process.cwd(), 'dist'), // 打包的出口文件夹路径
         clean: true, // webpack4需要配置clean-webpack-plugin删除dist文件，webpack5内置了。
         publicPath: '/', // 打包后文件的公共前缀路径
     },
     resolve: {
         extensions: ['.js', 'jsx', '.tsx', '.ts'],
         alias: {
-            '@': path.resolve(__dirname, '../src')
+            '@': path.resolve(process.cwd(), 'src')
         },
-        modules: [path.resolve(__dirname, '../node_modules')],
+        modules: [path.resolve(process.cwd(), 'node_modules')],
     },
     module: {
         rules: [
@@ -141,7 +141,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, '../public/index.html'),
+            template: path.join(process.cwd(), '/public/index.html'),
             inject: true
         }),
         new webpack.DefinePlugin({
@@ -152,11 +152,11 @@ module.exports = {
         }),
         AutoImport({
             imports: ['react', 'react-router-dom'],
-            dts: './src/auto-imports.d.ts',
+            dts: path.join(srcPath, 'auto-imports.d.ts'),
             eslintrc: {
                 enabled: true,
                 // 配置文件的位置
-                filepath: './.eslintrc-auto-import.json',
+                filepath: path.join(process.cwd(), '.eslintrc-auto-import.json'),
                 globalsPropValue: true,
             }
         })

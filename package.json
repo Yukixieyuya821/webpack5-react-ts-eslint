@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:vite": "vite",
+    "dev:vite": "vite --config config/vite/index.ts",
     "build:vite": "tsc && vite build",
-    "dev": "cross-env NODE_ENV=development BASE_ENV=development webpack serve --open --config config/webpack.dev.js",
-    "build": "cross-env NODE_ENV=production BASE_ENV=production webpack --config config/webpack.prod.js",
-    "analy": "cross-env NODE_ENV=production BASE_ENV=production webpack --config config/webpack.analy",
+    "dev": "cross-env NODE_ENV=development BASE_ENV=development webpack serve --open --config config/webpack/webpack.dev.js",
+    "build": "cross-env NODE_ENV=production BASE_ENV=production webpack --config config/webpack/webpack.prod.js",
+    "analy": "cross-env NODE_ENV=production BASE_ENV=production webpack --config config/webpack/webpack.analy",
     "lint": "eslint src --fix --ext .js,.ts,.jsx,.tsx"
   },
   "keywords": [],
